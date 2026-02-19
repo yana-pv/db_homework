@@ -1,0 +1,62 @@
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+
+# Project files - игнорируем bin/obj только в папках с кодом
+**/DataGenerator/**/bin/
+**/DataGenerator/**/obj/
+**/DataGenerator/**/Debug/
+**/DataGenerator/**/Release/
+
+# Но НЕ игнорируем sql папку! 
+# (нет правила для sql/)
+
+# NuGet packages
+packages/
+*.nuget/
+
+# User-specific files
+*.user
+*.settings
+
+# Logs
+*.log
+*.tmp
+
+# Database files
+*.mdf
+*.ldf
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker
+*.pid
+*.seed
+*.pid.lock
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
