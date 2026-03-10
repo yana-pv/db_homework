@@ -1,0 +1,17 @@
+pg_stat_statements_approx:
+  query: |
+    SELECT
+      queryid,
+      approx_p99,
+      calls
+    FROM monitor_pg_stat_statements
+  metrics:
+    - queryid:
+        usage: "LABEL"
+        description: "Query ID"
+    - approx_p99:
+        usage: "GAUGE"
+        description: "Approximate p99 latency (ms)"
+    - calls:
+        usage: "COUNTER"
+        description: "Number of calls"

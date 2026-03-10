@@ -1,0 +1,44 @@
+services:
+  postgres_exporter:
+    image: prometheuscommunity/postgres-exporter
+    container_name: autoservice-exporter
+    environment:
+      DATA_SOURCE_NAME: "postgresql://admin:admin@postgres:5432/autoservice?sslmode=disable"
+    networks:
+      - autoservice_net
+    volumes:
+      - ./monitoring/queries.yaml:/queries.yaml
+    command:
+      - "--extend.query-path=/queries.yaml"
+      - "--collector.stat_statements"
+      - "--collector.stat_statements.query_length=300"
+      - "--collector.stat_statements.limit=500"
+    ports:
+      - "9187:9187"
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus
+    container_name: autoservice-prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - autoservice_net
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - postgres_exporter
+
+  grafana:
+    image: grafana/grafana
+    container_name: autoservice-grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - autoservice_net
+    depends_on:
+      - prometheus
+
+networks:
+  autoservice_net:
+    driver: bridge 
