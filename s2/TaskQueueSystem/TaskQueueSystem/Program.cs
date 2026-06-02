@@ -6,16 +6,16 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        Console.WriteLine("╔════════════════════════════════════════════════════════════════╗");
+        Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
         Console.WriteLine("║     СИСТЕМА ОЧЕРЕДИ ЗАДАЧ НА POSTGRESQL - АНАЛИЗ ПРОИЗВОДИТЕЛЬНОСТИ    ║");
-        Console.WriteLine("╚════════════════════════════════════════════════════════════════╝\n");
+        Console.WriteLine("╚════════════════════════════════════════════════════════════════════════╝\n");
 
         var dbConfig = new DatabaseConfig
         {
             Host = "localhost",
             Port = 5438,
             Username = "admin",
-            Password = "admin", // ⚠️ ИЗМЕНИТЕ НА ВАШ ПАРОЛЬ
+            Password = "admin", 
             Database = "autoservice"
         };
 
